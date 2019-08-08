@@ -445,3 +445,20 @@ class TestWriter extends EE {
   const w = new W({ objectMode: true });
   assert.strictEqual(w.writableObjectMode, true);
 }
+
+{
+  // Verify readableEnded property
+  assert(R.prototype.hasOwnProperty('readableEnded'));
+  const r = new R();
+  r.end();
+  assert.strictEqual(r.readableEnded, true);
+}
+
+{
+  // Verify writableEnded property
+  assert(W.prototype.hasOwnProperty('writableEnded'));
+
+  const w = new W();
+  w.end();
+  assert.strictEqual(w.writableEnded, true);
+}

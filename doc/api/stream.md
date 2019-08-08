@@ -489,6 +489,16 @@ added: v11.4.0
 
 Is `true` if it is safe to call [`writable.write()`][stream-write].
 
+##### writable.writableEnded
+<!-- YAML
+added: REPLACEME
+-->
+
+* {boolean}
+
+Getter and Setter for the property `ended` of a given `Writable` stream.
+
+
 ##### writable.writableFinished
 <!-- YAML
 added: v12.6.0
@@ -1113,6 +1123,15 @@ added: v12.7.0
 Getter for the property `encoding` of a given `Readable` stream. The `encoding`
 property can be set using the [`readable.setEncoding()`][] method.
 
+##### readable.readableEnded
+<!-- YAML
+added: REPLACEME
+-->
+
+* {boolean}
+
+Getter for the property `ended` of a given `Readable` stream.
+
 ##### readable.readableHighWaterMark
 <!-- YAML
 added: v9.3.0
@@ -1142,6 +1161,7 @@ added: v12.3.0
 * {boolean}
 
 Getter for the property `objectMode` of a given `Readable` stream.
+
 
 ##### readable.resume()
 <!-- YAML
