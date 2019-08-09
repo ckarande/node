@@ -1143,6 +1143,15 @@ added: v12.3.0
 
 Getter for the property `objectMode` of a given `Readable` stream.
 
+##### readable.readableResumeScheduled
+<!-- YAML
+added: REPLACEME
+-->
+
+* {boolean}
+
+Getter for the property `resumeScheduled` of a given `Readable` stream.
+
 ##### readable.resume()
 <!-- YAML
 added: v0.9.4
