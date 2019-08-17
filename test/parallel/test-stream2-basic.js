@@ -439,6 +439,16 @@ class TestWriter extends EE {
 }
 
 {
+  // Verify readableResumeScheduled property
+  assert(R.prototype.hasOwnProperty('readableResumeScheduled'));
+
+  const r = new TestReader(20);
+  assert.strictEqual(r.readableResumeScheduled, false);
+  r.resume();
+  assert.strictEqual(r.readableResumeScheduled, true);
+}
+
+{
   // Verify writableObjectMode property
   assert(W.prototype.hasOwnProperty('writableObjectMode'));
 
