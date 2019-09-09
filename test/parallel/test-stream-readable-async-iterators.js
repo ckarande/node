@@ -527,5 +527,35 @@ async function tests() {
   p.then(common.mustCall()).catch(common.mustNotCall());
 }
 
+{
+  async function * generate() {
+    yield 'a';
+    yield 'b';
+    yield 'c';
+  }
+
+const { once } = require('events');
+const fs = require('fs');
+
+const writable = fs.createWriteStream('./file');
+
+(async function() {
+  
+  for await (const chunk of generate()) {
+    // Handle backpressure on write().
+    if (!writable.write(chunk))
+    try {  
+      await once(writable, 'drain');
+    } catch(err) {
+      console.log('error happened', err);
+    }
+  } 
+  
+  writable.end();
+  // Ensure completion without errors.
+  await once(writable, 'finish');
+})().catch(console.error);
+ }
+
 // To avoid missing some tests if a promise does not resolve
 tests().then(common.mustCall());
