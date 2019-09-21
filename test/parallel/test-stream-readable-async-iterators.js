@@ -3,6 +3,9 @@
 const common = require('../common');
 const { Readable, Transform, PassThrough, pipeline } = require('stream');
 const assert = require('assert');
+const util = require('util'); 
+const stream = require('stream');
+const finished = util.promisify(stream.finished);
 
 async function tests() {
   {
@@ -553,7 +556,8 @@ const writable = fs.createWriteStream('./file');
   
   writable.end();
   // Ensure completion without errors.
-  await once(writable, 'finish');
+  //await once(writable, 'finish');
+  await finished(writable);
 })().catch(console.error);
  }
 
